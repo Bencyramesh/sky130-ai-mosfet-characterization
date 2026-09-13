@@ -1,0 +1,29 @@
+* MOSFET Dataset Generation
+
+Vd drain 0 0
+Vg gate 0 0
+
+M1 drain gate 0 0 NMOS_MODEL W=10u L=1u
+
+.model NMOS_MODEL NMOS (
++ LEVEL=1
++ VTO=0.7
++ KP=200u
++ LAMBDA=0.02
++ )
+
+* Sweep both VGS and VDS
+.dc Vg 0 1.8 0.1 Vd 0 1.8 0.1
+
+.control
+
+run
+
+set wr_singlescale
+set wr_vecnames
+
+wrdata data/raw_dataset.dat v(gate) v(drain) i(Vd)
+
+.endc
+
+.end

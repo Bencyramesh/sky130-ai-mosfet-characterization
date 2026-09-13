@@ -1,0 +1,31 @@
+* NMOS ID vs VGS Simulation
+
+* Drain supply
+Vd drain 0 1.8
+
+* Gate supply
+Vg gate 0 0
+
+* NMOS transistor
+M1 drain gate 0 0 NMOS_MODEL W=10u L=1u
+
+* Simple NMOS model
+.model NMOS_MODEL NMOS (
++ LEVEL=1
++ VTO=0.7
++ KP=200u
++ LAMBDA=0.02
++ )
+
+* Sweep Gate Voltage from 0V to 1.8V
+.dc Vg 0 1.8 0.05
+
+* Save the results
+.control
+run
+set wr_singlescale
+set wr_vecnames
+wrdata data/id_vgs.dat v(gate) i(Vd)
+.endc
+
+.end

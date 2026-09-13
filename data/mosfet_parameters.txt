@@ -1,0 +1,5 @@
+MOSFET CHARACTERIZATION RESULTS
+--------------------------------
+Threshold Voltage VTH = 0.700 V
+Maximum gm = 2.227 mS
+VGS at maximum gm = 1.800 V
